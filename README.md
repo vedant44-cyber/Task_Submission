@@ -1,14 +1,17 @@
-Spider Task Submission <br>
+# Spider Task Submission <br>
 
-Task 1
+## Task 1
 <br>
-Attempted Common task<br>
-              1)Computer Networking<br>
-              2)JavaScript (JS)<br>
-              3)Database Management Systems (DBMS)<br>
-          Domain Specific Task <br>
-              1)Cyber Security<br>
+
+### <b>Attempted Common task </b>
+ 1)Computer Networking<br>
+      2)JavaScript (JS)<br>
+      3)Database Management Systems (DBMS)<br>
+ 
+### <b>Domain Specific Task </b>
+1)Cyber Security
 <br>
+  <br>
 Name :- Vedant Dorlikar<br>
 Roll no :- 107123133<br>
             
