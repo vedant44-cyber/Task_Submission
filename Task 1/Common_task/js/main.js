@@ -3,9 +3,13 @@ let resetBtn = document.querySelector("#reset-btn");
 let newGameBtn = document.querySelector("#new-btn");
 let msgContainer = document.querySelector(".msg-container");
 let msg = document.querySelector("#msg");
+let timerDisplay = document.querySelector("#timer");
 
-let turnO = true; // playerO's turn
-let count = 0; // To track the number of moves
+let turnO = true;
+let count = 0;
+let moveTimeLimit = 10;
+let timer;
+let timeLeft = moveTimeLimit;
 
 const winPatterns = [
     [0, 1, 2],
@@ -21,28 +25,69 @@ const winPatterns = [
 const resetGame = () => {
     turnO = true;
     count = 0;
+    timeLeft = moveTimeLimit;
     enableBoxes();
     msgContainer.classList.add("hide");
+    clearInterval(timer);
+    updateTimerDisplay();
+    startMoveTimer();
+};
+
+const startMoveTimer = () => {
+    timer = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+
+        if (timeLeft <= 0) {
+            switchTurns();
+        }
+    }, 1000);
+};
+
+const stopMoveTimer = () => {
+    clearInterval(timer);
+};
+
+const switchTurns = () => {
+    if (turnO) {
+
+        turnO = false;
+    } else {
+
+        turnO = true;
+    }
+    stopMoveTimer();
+    timeLeft = moveTimeLimit;
+    updateTimerDisplay();
+    startMoveTimer();
+};
+
+const updateTimerDisplay = () => {
+    timerDisplay.textContent = `Time Left: ${timeLeft} sec`;
 };
 
 boxes.forEach((box, index) => {
     box.addEventListener("click", () => {
-        if (turnO) {
-            // playerO
-            box.innerText = "O";
-            turnO = false;
-        } else {
-            // playerX
-            box.innerText = "X";
-            turnO = true;
-        }
-        box.disabled = true;
-        count++;
+        if (box.innerText === "") {
+            if (turnO) {
 
-        let isWinner = checkWinner();
+                box.innerText = "O";
+                switchTurns();
+            } else {
 
-        if (count === 9 && !isWinner) {
-            gameDraw();
+                box.innerText = "X";
+                switchTurns();
+            }
+            box.disabled = true;
+            count++;
+
+            let isWinner = checkWinner();
+
+            if (count === 9 && !isWinner) {
+                gameDraw();
+            } else if (isWinner) {
+                stopMoveTimer();
+            }
         }
     });
 });
@@ -51,6 +96,7 @@ const gameDraw = () => {
     msg.innerText = `Game was a Draw.`;
     msgContainer.classList.remove("hide");
     disableBoxes();
+    stopMoveTimer();
 };
 
 const disableBoxes = () => {
@@ -67,8 +113,7 @@ const enableBoxes = () => {
 };
 
 const showWinner = (winner) => {
-    msg.innerText = `Congratulations, 
-    Winner is ${winner}`;
+    msg.innerText = `Congratulations, Winner is ${winner}`;
     msgContainer.classList.remove("hide");
     disableBoxes();
 };
@@ -86,8 +131,11 @@ const checkWinner = () => {
             }
         }
     }
-    return false; // Return false if no winner is found
+    return false;
 };
 
 newGameBtn.addEventListener("click", resetGame);
 resetBtn.addEventListener("click", resetGame);
+
+
+resetGame();
