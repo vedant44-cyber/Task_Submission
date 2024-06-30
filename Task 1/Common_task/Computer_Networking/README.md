@@ -2,12 +2,19 @@
 <br>
 
 ##  1. Basics of terminal
+All the command has been studied and implemented in Ubuntu 22.04.4 LTS Terminal <br>
+Proper Documentation of learning has been shown in Computer Networking.pdf 
 <br> 1) ifconfig:-
 <br> 2) Netplan :-
 <br> 3) ping :-
 <br> 4) traceroute:-
 <br>
 ## 2. Basic Network Topology Module
+For Network Simulation Cisco Packet Tracer has been used.<br>
+The working of Simulation has been verify using Various Networking commands (ping,traceroute,etc)<br>
+The Simulation can be run on local system by downloading the .pkt file.<br>
+(Ensure you have properly installed Cisco Packet Tracer)
+
 <br> 1) Star Topology
 <img width="1440" alt="Screenshot 2024-06-23 at 10 46 31 PM" src="https://github.com/vedant44-cyber/Task_Submission/assets/145666524/23099440-569f-401a-971d-e6c6acc0c06b">
 <br>
