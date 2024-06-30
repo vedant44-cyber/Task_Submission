@@ -1,5 +1,7 @@
 # DBMS<br>
 
+### The below are the steps given to setup the DBMS server in ubuntu 
+( Make sure you have propertly install the MYSQL for reference you can use this https://ubuntu.com/server/docs/install-and-configure-a-mysql-server)
 
 ## Verify the SQL database service is running <br>
   
